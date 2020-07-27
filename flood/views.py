@@ -18,7 +18,8 @@ class UserProfileViewSet(ModelViewSet):
     queryset=UserProfile.objects.all()
     permission_classes=(UserProfilePermission,)
     authentication_classes=(TokenAuthentication,)
-
+    filter_backends=[DjangoFilterBackend,]
+    filtering_fields=['phone']
     def get_queryset(self):
         #obj=self.get_object()
         queryset=UserProfile.objects.all()
@@ -49,7 +50,7 @@ class UserPostViewSet(ModelViewSet):
 
 
     filter_backends = [filters.OrderingFilter,DjangoFilterBackend,]
-    filterset_fields =['isAnnouncement','isDonate','isRequest']
+    filterset_fields =['isAnnouncement','isDonate','isRequest','userprofile']
     ordering_fields = ['creationtime', 'upvotes']
 
     def perform_create(self, serializer):
