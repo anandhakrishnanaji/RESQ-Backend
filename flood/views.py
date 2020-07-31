@@ -20,7 +20,7 @@ class UserProfileViewSet(ModelViewSet):
     permission_classes=(UserProfilePermission,)
     authentication_classes=(TokenAuthentication,)
     filter_backends=[DjangoFilterBackend,]
-    filterset_fields=['phone',]
+    filterset_fields=['phone','is_volunteer',]
     def get_queryset(self):
         #obj=self.get_object()
         queryset=UserProfile.objects.all()
