@@ -12,6 +12,7 @@ from decimal import Decimal
 from django.shortcuts import get_object_or_404
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
+from itertools import chain
 
 class UserProfileViewSet(ModelViewSet):
     serializer_class=UserProfileSerializer
@@ -26,7 +27,8 @@ class UserProfileViewSet(ModelViewSet):
         lat=self.request.query_params.get('lat',None)
         lon=self.request.query_params.get('lon',None)
         if lat is not None and lon is not None:
-            return [x for x in queryset if self.get_near(Decimal(lat),Decimal(lon),x.lat,x.lon)]
+            nearlist= [x.pk for x in queryset if self.get_near(Decimal(lat),Decimal(lon),x.lat,x.lon)]
+            return UserProfile.objects.filter(pk__in=nearlist)
         else:
             return queryset
 
@@ -66,7 +68,8 @@ class UserPostViewSet(ModelViewSet):
         lat=self.request.query_params.get('lat',None)
         lon=self.request.query_params.get('lon',None)
         if lat is not None and lon is not None:
-            return [x for x in queryset if self.get_near(Decimal(lat),Decimal(lon),x.lat,x.lon)]
+            nearlist= [x.pk for x in queryset if self.get_near(Decimal(lat),Decimal(lon),x.lat,x.lon)]
+            return UserPost.objects.filter(pk__in=nearlist)
         else:
             return queryset
 
