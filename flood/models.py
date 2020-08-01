@@ -84,4 +84,4 @@ class UserPost(models.Model):
     objects=UserPostManager()
 
     def __str__(self):
-        return self.userprofile
+        return self.userprofile.name
