@@ -1,7 +1,7 @@
 # RESQ-Backend
 API made with Django Rest Framework for the project RESQ, an app designed to coordinate voluntary activities during floods.
 
-Checkout the API deployed [TEXT TO SHOW](https://kresq.herokuapp.com/docs/)
+Checkout the API deployed [link to RESQ API complete docs](https://kresq.herokuapp.com/docs/)
 
 **API Documentation**
 
