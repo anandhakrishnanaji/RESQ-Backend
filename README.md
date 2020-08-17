@@ -3,6 +3,9 @@ API made with Django Rest Framework for the project RESQ, an app designed to coo
 
 Checkout the API deployed [link to RESQ API complete docs](https://kresq.herokuapp.com/docs/)
 
+**To try out the API,**
+
+
 **API Documentation**
 
 **Show User**
